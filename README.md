@@ -1,18 +1,21 @@
 # sha256
+A sha256 implementation for Minecraft using mcfunction. Supports 1.16-1.17.
+
+# Setup:
+You can install this datapack by putting all contents of this repository into a folder named "sha256", and putting that folder in the datapack folder in your world save.
+After doing so, run ```function sha256:init``` to setup initial variables.
 
 # Usage:
 
-Setup:
-function sha256:init
+Set your input using the following command:
+```data modify storage sha256:memory input set value <array of binary bits>```
+Example Usage:
+To input the string "abc", use:
+```data modify storage sha256:memory input set value [0,1,1,0,0,0,0,1,0,1,1,0,0,0,1,0,0,1,1,0,0,0,1,1]```
 
-Set what you want to hash using:
-data modify storage sha256:memory input set value [0,1,1,0,0,0,0,1,0,1,1,0,0,0,1,0,0,1,1,0,0,0,1,1]
+Then, to hash the input, run ```function sha256:main```
 
-Hash using:
-function sha256:main
+Then get the output using ```data get storage sha256:memory output```
 
-Get output using:
-data get storage sha256:memory output
-
-Expected result:
-1011101001111000000101101011111110001111000000011100111111101010010000010100000101000000110111100101110110101110001000100010001110110000000000110110000110100011100101100001011101111010100111001011010000010000111111110110000111110010000000000001010110101101
+For the "abc" example, you should get this output:
+```[CHAT] Storage sha256:memory has the following contents: [1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1]```
